@@ -1,0 +1,23 @@
+# requirements.txt - Minimal dependencies for deployment
+
+# Core web framework
+fastapi
+uvicorn
+python-multipart
+
+# Environment & utilities
+python-dotenv
+requests
+
+# PDF processing
+pypdf
+
+# LangChain ecosystem (minimal)
+langchain
+langchain-core
+langchain-groq
+
+# Google OAuth
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
