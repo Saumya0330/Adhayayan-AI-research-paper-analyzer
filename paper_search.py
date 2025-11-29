@@ -78,7 +78,7 @@ def search_papers_from_pdf(pdfs: list, response_text: str) -> str:
     Main function to generate citations section.
     Combines extracted references and LLM-generated related papers.
     """
-    html_output = "<div style='padding: 10px;'>"
+    html_output = "<div style='padding: 5px;'>"
     
     # 1. Try to extract references from PDFs (using pdf_text from database)
     all_references = []
@@ -89,17 +89,16 @@ def search_papers_from_pdf(pdfs: list, response_text: str) -> str:
             all_references.extend(refs)
     
     if all_references:
-        html_output += "<h4 style='color: #a78bfa; margin-bottom: 10px;'>📚 References from Uploaded Papers</h4>"
-        html_output += "<ul style='margin: 10px 0; padding-left: 20px; line-height: 1.8;'>"
+        html_output += "<h4 style='color: #a78bfa; margin: 0 0 12px 0; font-size: 14px;'>📖 References from Uploaded Papers</h4>"
+        html_output += "<ul style='margin: 0 0 20px 0; padding: 0; list-style: none;'>"
         for ref in all_references[:5]:  # Show max 5 references
-            html_output += f"<li style='margin: 5px 0; color: #d1d5db;'>{ref}</li>"
+            html_output += f"<li style='margin: 0 0 8px 0; padding: 10px 12px; background: rgba(30, 30, 45, 0.4); border-radius: 8px; border-left: 3px solid rgba(167, 139, 250, 0.3); color: #d1d5db; font-size: 13px; line-height: 1.6;'>{ref}</li>"
         html_output += "</ul>"
-        html_output += "<hr style='border: 0; border-top: 1px solid rgba(100, 100, 150, 0.2); margin: 20px 0;'>"
     
     # 2. Generate related papers using LLM
     related_papers = generate_related_papers_with_llm(pdfs, response_text)
     
-    html_output += f"<div style='color: #d1d5db; line-height: 1.8;'>{related_papers}</div>"
+    html_output += f"<div style='color: #d1d5db; line-height: 1.8; font-size: 13px;'>{related_papers}</div>"
     html_output += "</div>"
     
     return html_output
