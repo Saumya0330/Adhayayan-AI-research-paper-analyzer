@@ -77,8 +77,8 @@ def retrieve_from_pdf_texts(query: str, pdfs: List[Dict], top_k: int = 6) -> Lis
     """
     all_chunks = []
     
-    # Extract chunks from all PDFs
-    for pdf in pdfs:
+    # Extract chunks from all PDFs (limit to first 3 PDFs to avoid token issues)
+    for pdf in pdfs[:3]:  # LIMIT TO 3 PDFs MAX
         if pdf.get('pdf_text'):
             chunks = extract_chunks_from_text(pdf['pdf_text'], pdf['filename'])
             all_chunks.extend(chunks)
@@ -96,5 +96,10 @@ def retrieve_from_pdf_texts(query: str, pdfs: List[Dict], top_k: int = 6) -> Lis
     # If no relevant chunks found, return first few chunks as fallback
     if not relevant_chunks:
         relevant_chunks = all_chunks[:top_k]
+    
+    # Truncate each chunk to max 1000 chars to avoid token limits
+    for chunk in relevant_chunks:
+        if len(chunk['text']) > 1000:
+            chunk['text'] = chunk['text'][:1000] + "..."
     
     return relevant_chunks
