@@ -6,7 +6,7 @@ def extract_chunks_from_text(pdf_text: str, filename: str) -> List[Dict]:
     Split PDF text into chunks by pages.
     """
     chunks = []
-    
+    pdf_text = pdf_text.replace('\x00', '')
     # Split by page markers
     pages = pdf_text.split("--- Page ")
     
