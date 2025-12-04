@@ -45,18 +45,17 @@ UPLOADED PAPERS SUMMARY:
 
 Generate 5 related papers in this EXACT format (use bullet points with •):
 
-• **[Paper Title 1]** by Author1, Author2 et al. (2023)
+• [Paper Title 1] by Author1, Author2 et al. (2023)
   Research area and brief relevance explanation in one line.
 
-• **[Paper Title 2]** by Author1, Author2 (2022)
+• [Paper Title 2] by Author1, Author2 (2022)
   Research area and brief relevance explanation in one line.
 
 REQUIREMENTS:
-- Use bullet point (•) for each paper
+- Use bullet point (•) for each paper and then go to new line
 - Make titles realistic and academic
 - Years between 2019-2025
 - Keep each description to ONE line only
-- No extra formatting or sections
 
 Generate exactly 5 papers with bullet points:"""
 
